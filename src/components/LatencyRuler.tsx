@@ -9,7 +9,7 @@ export function LatencyRuler() {
   const before = percent(latency.beforeMs);
 
   return (
-    <figure className="my-10">
+    <figure className="my-8">
       <div className="flex items-baseline justify-between gap-4">
         <figcaption className="font-mono text-[11px] tracking-[0.16em] text-muted uppercase">
           Card authorization · p99 vs a {latency.budgetMs / 1000}s budget

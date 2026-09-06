@@ -10,15 +10,14 @@ export function SiteFooter() {
             {site.domain}
           </p>
           <p className="mt-2 max-w-sm text-sm text-muted">
-            {site.name} · {site.location} · {site.currentRole.title} at{" "}
-            {site.currentRole.company}
+            {site.name} · {site.location} · {site.currentRole.company}
           </p>
         </div>
         <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
           <li>
             <a
               href={site.links.github.href}
-              className="text-muted underline decoration-line underline-offset-4 hover:text-ink"
+              className="text-muted underline decoration-line underline-offset-4 transition-colors hover:text-ink"
             >
               GitHub
             </a>
@@ -26,7 +25,7 @@ export function SiteFooter() {
           <li>
             <a
               href={site.links.linkedin.href}
-              className="text-muted underline decoration-line underline-offset-4 hover:text-ink"
+              className="text-muted underline decoration-line underline-offset-4 transition-colors hover:text-ink"
             >
               LinkedIn
             </a>
@@ -34,7 +33,7 @@ export function SiteFooter() {
           <li>
             <Link
               href="/contact/"
-              className="text-muted underline decoration-line underline-offset-4 hover:text-ink"
+              className="text-muted underline decoration-line underline-offset-4 transition-colors hover:text-ink"
             >
               Contact
             </Link>

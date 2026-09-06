@@ -12,10 +12,10 @@ export function PageIntro({
       <p className="font-mono text-[11px] tracking-[0.2em] text-brass uppercase">
         {kicker}
       </p>
-      <h1 className="font-display mt-3 text-4xl leading-[1.1] text-ink sm:text-5xl">
+      <h1 className="font-display mt-4 text-5xl leading-[0.95] text-ink sm:text-6xl">
         {title}
       </h1>
-      <p className="mt-5 text-lg leading-8 text-muted">{lede}</p>
+      <p className="mt-6 max-w-lg text-xl leading-8 text-ink/90">{lede}</p>
     </header>
   );
 }

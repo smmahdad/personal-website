@@ -1,9 +1,13 @@
+import { readFileSync, readdirSync, statSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 import { about } from "./about";
+import { contact } from "./contact";
 import { home } from "./home";
 import { site } from "./site";
 import { latency, work } from "./work";
-import { writing } from "./writing";
+import { writing, writingIntro } from "./writing";
 
 const allText = JSON.stringify({
   site,
@@ -11,13 +15,61 @@ const allText = JSON.stringify({
   about,
   work,
   writing,
+  writingIntro,
+  contact,
 });
 
+const memoirTells = [
+  /shapes how i work/i,
+  /leaving teams better/i,
+  /through-line/i,
+  /texture i want/i,
+  /soft-focus/i,
+  /running preference/i,
+  /occasional afternoon/i,
+];
+
+const metaTells = [
+  /lorem ipsum/i,
+  /todo: write/i,
+  /your name here/i,
+  /src\/content/i,
+  /placeholder/i,
+  /invented scope/i,
+  /no product internals/i,
+  /edit this file/i,
+  /until email on this domain/i,
+  /inbox is live/i,
+];
+
+function walkFiles(dir: string, acc: string[] = []): string[] {
+  for (const name of readdirSync(dir)) {
+    const path = join(dir, name);
+    if (statSync(path).isDirectory()) walkFiles(path, acc);
+    else if (/\.(ts|tsx)$/.test(name)) acc.push(path);
+  }
+  return acc;
+}
+
 describe("site content", () => {
-  it("has no placeholder copy", () => {
-    expect(allText).not.toMatch(/lorem ipsum/i);
-    expect(allText).not.toMatch(/todo: write/i);
-    expect(allText).not.toMatch(/your name here/i);
+  it("has no placeholder, meta, or memoir-voice copy", () => {
+    for (const pattern of [...metaTells, ...memoirTells]) {
+      expect(allText).not.toMatch(pattern);
+    }
+  });
+
+  it("keeps rendered pages free of author-note copy", () => {
+    const here = dirname(fileURLToPath(import.meta.url));
+    const roots = [join(here, "../app"), join(here, "../components")];
+    const files = roots.flatMap((root) => walkFiles(root));
+    const rendered = files
+      .map((file) => readFileSync(file, "utf8"))
+      .join("\n");
+
+    expect(rendered).not.toMatch(/src\/content\//);
+    expect(rendered).not.toMatch(/Room for more/i);
+    expect(rendered).not.toMatch(/Placeholder —/i);
+    expect(rendered).not.toMatch(/invented scope/i);
   });
 
   it("identifies Sam and the public domain", () => {
@@ -48,6 +100,10 @@ describe("site content", () => {
     expect(site.links.github.href).toBe("https://github.com/smmahdad");
     expect(site.links.linkedin.href).toContain("smmahdad");
     expect(site.links.email).toBeNull();
+    expect(contact.channels.map((channel) => channel.label)).toEqual([
+      "GitHub",
+      "LinkedIn",
+    ]);
   });
 
   it("includes the public engineering write-up", () => {

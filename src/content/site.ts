@@ -22,10 +22,9 @@ export const site = {
     companyUrl: "https://cursor.com",
     summary: "AI coding product",
   },
-  tagline:
-    "I like hard problems with real consequences — declined cards, bad measurements, tools people actually use.",
+  tagline: "Declined cards. Bad measurements. Tools people actually use.",
   description:
-    "Sam Mahdad is an engineer in New York, currently at Cursor. Previously Rippling Spend and Amazon Ads.",
+    "Sam Mahdad. Engineering at Cursor. Previously Rippling Spend and Amazon Ads.",
   links: {
     github: {
       label: "GitHub",
@@ -37,7 +36,6 @@ export const site = {
       href: "https://www.linkedin.com/in/smmahdad",
       handle: "smmahdad",
     },
-    // TODO: replace with a real inbox once mail for sammah.dad is set up.
     email: null as string | null,
   },
   nav: [

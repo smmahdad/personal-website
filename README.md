@@ -38,10 +38,11 @@ All biographical and work copy lives in:
 | File | What it is |
 | --- | --- |
 | `src/content/site.ts` | Name, domain, current role, nav, GitHub / LinkedIn / email |
-| `src/content/home.ts` | Hero, now/before strip, closing line |
-| `src/content/about.ts` | Personal essay and asides |
+| `src/content/home.ts` | Hero, now/before cards, featured stat, closing line |
+| `src/content/about.ts` | Short personal lines and asides |
 | `src/content/work.ts` | Cursor, Rippling, Amazon stories + latency graphic numbers |
 | `src/content/writing.ts` | Public posts |
+| `src/content/contact.ts` | Contact intro and channels |
 
 Comments at the top of those files mark uncertain dates and placeholders. Do not invent employers, awards, or start dates.
 

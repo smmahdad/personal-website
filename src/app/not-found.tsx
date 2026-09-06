@@ -8,15 +8,15 @@ export default function NotFound() {
         <p className="font-mono text-[11px] tracking-[0.2em] text-brass uppercase">
           404
         </p>
-        <h1 className="font-display mt-3 text-5xl text-ink">
+        <h1 className="font-display mt-4 text-5xl leading-[0.95] text-ink sm:text-6xl">
           This path doesn&apos;t exist.
         </h1>
-        <p className="mt-5 max-w-md text-lg leading-8 text-muted">
+        <p className="mt-6 max-w-md text-lg leading-8 text-muted">
           Either I haven&apos;t written it yet, or the URL is off by a slash.
         </p>
         <p className="mt-8">
-          <Link href="/" className="text-brass">
-            Back home →
+          <Link href="/" className="btn btn-primary">
+            Home
           </Link>
         </p>
       </div>
