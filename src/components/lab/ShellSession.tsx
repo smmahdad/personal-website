@@ -18,7 +18,16 @@ type Line = {
   text: string;
 };
 
-const CHIPS = ["help", "ls", "now", "whoami", "tree", "fortune", "clear"];
+const CHIPS = [
+  "help",
+  "authorize",
+  "frisbee",
+  "forecast",
+  "sign",
+  "agent",
+  "ls",
+  "clear",
+];
 
 export function ShellSession() {
   const router = useRouter();

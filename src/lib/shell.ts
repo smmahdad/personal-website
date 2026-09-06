@@ -1,4 +1,10 @@
-import { fortunes, type FsDir, type FsNode, shellRoot } from "@/content/lab";
+import {
+  charges,
+  fortunes,
+  type FsDir,
+  type FsNode,
+  shellRoot,
+} from "@/content/lab";
 
 export type ShellAction = "clear" | "exit" | "vim";
 
@@ -21,6 +27,11 @@ export const shellCommands = [
   "date",
   "echo",
   "fortune",
+  "authorize",
+  "frisbee",
+  "forecast",
+  "sign",
+  "agent",
   "clear",
   "exit",
 ] as const;
@@ -188,7 +199,8 @@ export function runShellCommand(input: string, ctx: ShellContext): ShellResult {
       return {
         lines: [
           "whoami  ls  cd  cat  pwd  tree  now  date  fortune",
-          "open    echo  clear  exit",
+          "authorize  frisbee  forecast  sign  agent",
+          "open  echo  clear  exit",
           "ls -a if you're nosy. arrows for history.",
         ],
       };
@@ -257,6 +269,64 @@ export function runShellCommand(input: string, ctx: ShellContext): ShellResult {
     case "fortune": {
       const pick = Math.floor((ctx.rng ?? Math.random)() * fortunes.length);
       return { lines: [fortunes[pick] ?? fortunes[0]] };
+    }
+    case "authorize":
+    case "auth":
+    case "swipe": {
+      const flag = (args[0] ?? "now").toLowerCase();
+      const windowMs =
+        flag === "then" || flag === "3.5" ? 3500 : flag === "4" || flag === "budget" ? 4000 : 600;
+      const charge = charges[Math.floor((ctx.rng ?? Math.random)() * charges.length)] ?? charges[0];
+      const lives = windowMs <= 3500 || (ctx.rng ?? Math.random)() > 0.4;
+      return {
+        lines: [
+          `${charge.name} ${charge.amount}`,
+          `window ${windowMs === 600 ? "600ms" : `${(windowMs / 1000).toFixed(1)}s`}`,
+          lives ? "approved." : "declined. the network got there first.",
+        ],
+      };
+    }
+    case "frisbee":
+    case "huck":
+    case "disc": {
+      const yards = 28 + Math.floor((ctx.rng ?? Math.random)() * 30);
+      if (cmd === "huck") {
+        return { lines: [`${yards} yards.`, "too pretty. out the back. still worth it."] };
+      }
+      return { lines: ["backhand.", `${yards} yards.`, "someone else is already running."] };
+    }
+    case "forecast":
+    case "qps":
+    case "ads":
+      return {
+        lines: [
+          "qps          18420",
+          "forecast     0.81",
+          "actual       0.77",
+          "ghosts       4% unrecognized",
+        ],
+      };
+    case "sign":
+    case "asl": {
+      const word = (args.join("") || "sam").toLowerCase().replace(/[^a-z]/g, "");
+      if (!word) return { lines: ["need a word. try sign dad"] };
+      return { lines: [word.toUpperCase().split("").join(" · ")] };
+    }
+    case "agent": {
+      const job = (args[0] ?? "").toLowerCase();
+      if (job === "approve" || job === "authorize") {
+        return { lines: ["600ms.", "the card lives."] };
+      }
+      if (job === "throw" || job === "huck") {
+        return { lines: ["already in the air."] };
+      }
+      if (job === "sign") {
+        return { lines: ["S · A · M"] };
+      }
+      if (job === "count" || job === "ghosts") {
+        return { lines: ["marked the 4%."] };
+      }
+      return { lines: ["watching the page.", "maker."] };
     }
     case "clear":
     case "cls":

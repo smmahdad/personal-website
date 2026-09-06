@@ -7,7 +7,7 @@ import "./lab.css";
 
 export const metadata: Metadata = {
   title: "Lab",
-  description: "Toys, craft, and a shell. Other rooms on sammah.dad.",
+  description: "Swipe, throw, sign. Other rooms on sammah.dad.",
 };
 
 export default function LabPage() {

@@ -75,9 +75,27 @@ describe("runShellCommand", () => {
     ).toMatch(/four seconds/);
   });
 
+  it("plays the worlds as commands", () => {
+    const auth = runShellCommand("authorize now", { cwd: "", rng: () => 0 });
+    expect(auth.lines.join(" ")).toMatch(/600ms/);
+    expect(auth.lines.join(" ")).toMatch(/approved|declined/);
+    expect(runShellCommand("frisbee", { cwd: "", rng: () => 0 }).lines[0]).toMatch(
+      /backhand/,
+    );
+    expect(runShellCommand("forecast", { cwd: "" }).lines.join(" ")).toMatch(
+      /unrecognized/,
+    );
+    expect(runShellCommand("sign dad", { cwd: "" }).lines[0]).toBe("D · A · D");
+    expect(runShellCommand("agent approve", { cwd: "" }).lines.join(" ")).toMatch(
+      /card lives/,
+    );
+    expect(runShellCommand("help", { cwd: "" }).lines.join(" ")).toMatch(/frisbee/);
+  });
+
   it("completes commands and files", () => {
     expect(completeShell("wh", "")).toBe("whoami");
     expect(completeShell("cat no", "")).toBe("cat now");
     expect(completeShell("cd ab", "")).toBe("cd about/");
+    expect(completeShell("au", "")).toBe("authorize");
   });
 });

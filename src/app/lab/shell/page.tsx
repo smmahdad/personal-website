@@ -3,7 +3,7 @@ import { ShellSession } from "@/components/lab/ShellSession";
 
 export const metadata: Metadata = {
   title: "Shell",
-  description: "A home directory with Sam in it.",
+  description: "authorize, frisbee, forecast, sign, agent.",
 };
 
 export default function ShellPage() {

@@ -50,11 +50,19 @@
   display: flex;
   align-items: center;
   gap: 0.45rem;
+  appearance: none;
+  border: 0;
+  background: none;
+  padding: 0;
   font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: 0.2em;
   text-transform: lowercase;
   color: var(--craft-dim);
+}
+
+.craft-studio.craft-flash {
+  background: #1a100c;
 }
 
 .craft-pulse {
@@ -66,12 +74,98 @@
   animation: craft-pulse 2.4s ease-out infinite;
 }
 
+.craft-motes {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.craft-mote {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--craft-ink) 40%, transparent);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--craft-ink) 55%, transparent);
+}
+
+.craft-mote[data-ghost="true"] {
+  background: transparent;
+  border-color: var(--craft-gold);
+}
+
+.craft-disc {
+  position: fixed;
+  z-index: 3;
+  width: 34px;
+  height: 12px;
+  padding: 0;
+  border: 0;
+  border-radius: 99px;
+  background: var(--craft-gold);
+  transform: translate(-50%, -50%);
+  touch-action: none;
+}
+
+.craft-budget {
+  appearance: none;
+  border: 0;
+  background: none;
+  color: inherit;
+  position: relative;
+  width: 7.2rem;
+  height: 7.2rem;
+  margin-bottom: 1.4rem;
+}
+
+.craft-budget svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.craft-budget-track,
+.craft-budget-arc {
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.craft-budget-track {
+  stroke: color-mix(in srgb, var(--craft-ink) 16%, transparent);
+}
+
+.craft-budget-arc {
+  stroke: var(--craft-gold);
+}
+
+.craft-budget span {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  font-variant-numeric: tabular-nums;
+}
+
+.craft-sign {
+  min-height: 1.4rem;
+  margin: 1.2rem 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.28em;
+  color: var(--craft-gold);
+}
+
 .craft-stage {
   position: relative;
   z-index: 1;
   display: grid;
   min-height: calc(100dvh - 7.5rem);
   place-items: center;
+  align-content: center;
   padding: 4rem 1rem 6rem;
 }
 

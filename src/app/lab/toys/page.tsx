@@ -3,7 +3,7 @@ import { ToysDesk } from "@/components/lab/ToysDesk";
 
 export const metadata: Metadata = {
   title: "Toys",
-  description: "Clicky little web things. Approve a charge. Twist a dial. Hit the pads.",
+  description: "Swipe a charge. Catch unrecognized traffic. Huck a disc. Sign a letter.",
 };
 
 export default function ToysPage() {

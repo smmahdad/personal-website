@@ -4,7 +4,7 @@ import { writing } from "./writing";
 export const labIntro = {
   title: "Lab",
   kicker: "Play",
-  lede: "Three rooms. None of them are a homepage.",
+  lede: "Swipe. Throw. Sign. None of this is a homepage.",
 } as const;
 
 export const experiments = [
@@ -12,22 +12,22 @@ export const experiments = [
     slug: "toys",
     href: "/lab/toys/",
     title: "Toys",
-    vibe: "clicky, loud, a little sticky",
-    blurb: "Poke things. That's the whole page.",
+    vibe: "4 seconds · a disc · a hand",
+    blurb: "Swipe the card. Huck it. Spell something.",
   },
   {
     slug: "craft",
     href: "/lab/craft/",
     title: "Craft",
-    vibe: "type, air, gold",
-    blurb: "Almost no words. On purpose.",
+    vibe: "a machine that ticks",
+    blurb: "The window. The motes. Almost no words.",
   },
   {
     slug: "shell",
     href: "/lab/shell/",
     title: "Shell",
-    vibe: "a home directory",
-    blurb: "Type help. Or tap a file.",
+    vibe: "authorize · frisbee · sign",
+    blurb: "Type a world. Or tap one.",
   },
 ] as const;
 
@@ -35,34 +35,33 @@ export type Experiment = (typeof experiments)[number];
 
 export const toysCopy = {
   title: "toys",
-  lede: "Click stuff. That's the site.",
-  window: {
+  lede: "Poke a life. Not a resume.",
+  swipe: {
     title: "The Window",
-    hint: "Hit approve before the network does.",
-    thenLabel: "then · 3.5s",
-    nowLabel: "now · 600ms",
-    arm: "Arm a charge",
-    approve: "Approve",
-    approved: "approved",
-    declined: "declined",
+    hint: "Swipe right before the network kills it.",
   },
-  dial: {
-    title: "The Dial",
-    hint: "Twist it.",
-    calm: "still polite",
-    mid: "getting weird",
-    hot: "okay that's a lot",
+  forecast: {
+    title: "Ghosts",
+    hint: "Unrecognized traffic. Click a hollow one.",
   },
-  pads: {
-    title: "Pads",
-    hint: "Keys 1–6 if you've got them.",
+  disc: {
+    title: "Huck",
+    hint: "Pull back. Let go.",
+  },
+  hands: {
+    title: "Hands",
+    hint: "Type. Or tap a letter.",
+  },
+  agent: {
+    title: "Bot",
+    hint: "Give it a job. It touches the other toys.",
   },
 } as const;
 
 export const craftCopy = {
   name: "sam",
   place: "new york",
-  live: "live",
+  live: "bot",
 } as const;
 
 export type FsFile = {
@@ -102,7 +101,7 @@ export const shellRoot: FsDir = {
         },
         languages: {
           kind: "file",
-          text: "english. asl.",
+          text: "english. asl. the rest is motion.",
         },
       },
     },
@@ -115,11 +114,28 @@ export const shellRoot: FsDir = {
         },
         rippling: {
           kind: "file",
-          text: "spend. 3.5s to 600ms. that's the one i still tell.",
+          text: "spend. 3.5s to 600ms. four seconds is the whole joke.",
         },
         amazon: {
           kind: "file",
-          text: "ads. measurement. frequency capping. a lot of qps.",
+          text: "ads. measurement. frequency capping. ghosts in the traffic.",
+        },
+      },
+    },
+    play: {
+      kind: "dir",
+      children: {
+        disc: {
+          kind: "file",
+          text: "huck it. don't watch the line.",
+        },
+        hands: {
+          kind: "file",
+          text: "not a bit. a language.",
+        },
+        ads: {
+          kind: "file",
+          text: "if you can't measure it, it didn't happen. also the 4% you can't see.",
         },
       },
     },
@@ -147,14 +163,22 @@ export const shellRoot: FsDir = {
 
 export const shellMotd = [
   "sammah.dad",
-  "a home directory, not a homepage.",
-  "type help. tap a file. up arrow has history.",
+  "try: authorize   frisbee   forecast   sign   agent",
+  "or tap a file. up arrow has history.",
 ];
 
 export const fortunes = [
   "four seconds is a long time to a card network.",
   "measure it or it didn't happen.",
-  "community college. then berkeley. then the jobs.",
+  "huck it. run it down.",
   "asl. not a bit.",
-  "i still think in timeouts.",
+  "unrecognized traffic is still traffic.",
 ];
+
+export const charges = [
+  { name: "coffee", amount: "$4.80" },
+  { name: "the 6 train", amount: "$2.90" },
+  { name: "a very small lamp", amount: "$18.00" },
+  { name: "tacos", amount: "$14.00" },
+  { name: "one gummy", amount: "$0.25" },
+] as const;
