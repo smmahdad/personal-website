@@ -8,6 +8,7 @@ import { home } from "./home";
 import { grokBotLaunch, site } from "./site";
 import { latency, work } from "./work";
 import { writing, writingIntro } from "./writing";
+import { elsewhereCopy, radioLines, whispers } from "./elsewhere";
 import {
   craftCopy,
   experiments,
@@ -34,6 +35,9 @@ const allText = JSON.stringify({
   shellMotd,
   shellRoot,
   fortunes,
+  elsewhereCopy,
+  radioLines,
+  whispers,
 });
 
 const memoirTells = [
@@ -98,6 +102,7 @@ describe("site content", () => {
   it("exposes the lab from the main nav", () => {
     expect(site.nav.map((item) => item.href)).toContain("/lab/");
     expect(experiments.map((item) => item.slug)).toEqual([
+      "elsewhere",
       "toys",
       "craft",
       "shell",

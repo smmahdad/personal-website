@@ -4,30 +4,41 @@ import { writing } from "./writing";
 export const labIntro = {
   title: "Lab",
   kicker: "Play",
-  lede: "Swipe. Throw. Sign. None of this is a homepage.",
+  lede: "Go into the house. The old toys are still downstairs.",
 } as const;
 
 export const experiments = [
   {
+    slug: "elsewhere",
+    href: "/lab/elsewhere/",
+    title: "Elsewhere",
+    vibe: "bring a light",
+    blurb: "A night house. The train comes through the living room.",
+    tier: "hero",
+  },
+  {
     slug: "toys",
     href: "/lab/toys/",
     title: "Toys",
-    vibe: "4 seconds · a disc · a hand",
+    vibe: "v1 draft",
     blurb: "Swipe the card. Huck it. Spell something.",
+    tier: "draft",
   },
   {
     slug: "craft",
     href: "/lab/craft/",
     title: "Craft",
-    vibe: "a machine that ticks",
+    vibe: "v1 draft",
     blurb: "The window. The motes. Almost no words.",
+    tier: "draft",
   },
   {
     slug: "shell",
     href: "/lab/shell/",
     title: "Shell",
-    vibe: "authorize · frisbee · sign",
+    vibe: "v1 draft",
     blurb: "Type a world. Or tap one.",
+    tier: "draft",
   },
 ] as const;
 

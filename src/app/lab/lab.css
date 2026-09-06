@@ -1,3 +1,89 @@
+.lab-hero {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  min-height: 28rem;
+  margin: 3.5rem 0 0;
+  padding: 2rem 1.6rem 2.1rem;
+  text-decoration: none;
+  color: #f3e6c8;
+  background:
+    radial-gradient(900px 420px at 78% 40%, #2a1810 0%, transparent 58%),
+    #07060c;
+  border: 1px solid #241810;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+}
+
+.lab-hero-lamp {
+  position: absolute;
+  right: 12%;
+  top: 32%;
+  width: 16rem;
+  height: 16rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    #ffb14a 0%,
+    #ff7a1a55 28%,
+    transparent 70%
+  );
+  filter: blur(4px);
+  pointer-events: none;
+  animation: lab-hero-breathe 4.4s ease-in-out infinite;
+}
+
+.lab-hero-copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-height: 24rem;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.lab-hero-vibe,
+.lab-door-vibe {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: lowercase;
+}
+
+.lab-hero-vibe {
+  color: #ffb14a;
+}
+
+.lab-hero-title {
+  display: block;
+  margin-top: auto;
+  font-family: var(--font-display);
+  font-size: clamp(4.2rem, 12vw, 8.4rem);
+  line-height: 0.86;
+  letter-spacing: -0.06em;
+}
+
+.lab-hero-blurb {
+  display: block;
+  max-width: 22rem;
+  margin-top: 1rem;
+  color: #b8a88a;
+}
+
+.lab-hero:hover .lab-hero-lamp,
+.lab-hero:focus-visible .lab-hero-lamp {
+  transform: scale(1.12);
+  filter: blur(2px);
+}
+
+.lab-drafts-kicker {
+  margin: 3rem 0 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: lowercase;
+  color: var(--color-faint);
+}
+
 .lab-doors {
   display: grid;
   gap: 1rem;
@@ -18,13 +104,6 @@
 .lab-door:hover,
 .lab-door:focus-visible {
   transform: translateY(-3px);
-}
-
-.lab-door-vibe {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.14em;
-  text-transform: lowercase;
 }
 
 .lab-door-title,
@@ -99,8 +178,20 @@
 }
 
 @media (min-width: 900px) {
+  .lab-hero {
+    min-height: 34rem;
+    padding: 2.4rem 2.6rem 2.6rem;
+  }
+
   .lab-doors {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@keyframes lab-hero-breathe {
+  50% {
+    transform: scale(1.08);
+    opacity: 0.86;
   }
 }
 
@@ -108,5 +199,9 @@
   .lab-door:hover,
   .lab-door:focus-visible {
     transform: none;
+  }
+
+  .lab-hero-lamp {
+    animation: none;
   }
 }

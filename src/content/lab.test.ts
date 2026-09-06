@@ -3,16 +3,24 @@ import sitemap from "../app/sitemap";
 import { experiments, labIntro, shellRoot } from "./lab";
 
 describe("lab", () => {
-  it("lists three distinct rooms", () => {
-    expect(experiments).toHaveLength(3);
-    expect(new Set(experiments.map((item) => item.slug)).size).toBe(3);
-    expect(new Set(experiments.map((item) => item.vibe)).size).toBe(3);
-    expect(labIntro.lede).toMatch(/homepage/i);
+  it("stars the night house and parks the old toys as drafts", () => {
+    expect(experiments.map((item) => item.slug)).toEqual([
+      "elsewhere",
+      "toys",
+      "craft",
+      "shell",
+    ]);
+    expect(experiments[0]?.tier).toBe("hero");
+    expect(experiments.slice(1).every((item) => item.tier === "draft")).toBe(
+      true,
+    );
+    expect(labIntro.lede).toMatch(/house/i);
   });
 
   it("publishes lab routes in the sitemap", () => {
     const urls = sitemap().map((row) => row.url);
     expect(urls).toContain("https://sammah.dad/lab/");
+    expect(urls).toContain("https://sammah.dad/lab/elsewhere/");
     expect(urls).toContain("https://sammah.dad/lab/toys/");
     expect(urls).toContain("https://sammah.dad/lab/craft/");
     expect(urls).toContain("https://sammah.dad/lab/shell/");

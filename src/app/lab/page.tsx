@@ -7,8 +7,11 @@ import "./lab.css";
 
 export const metadata: Metadata = {
   title: "Lab",
-  description: "Swipe, throw, sign. Other rooms on sammah.dad.",
+  description: "A night house, and a few older drafts.",
 };
+
+const hero = experiments.find((experiment) => experiment.tier === "hero");
+const drafts = experiments.filter((experiment) => experiment.tier === "draft");
 
 export default function LabPage() {
   return (
@@ -19,8 +22,21 @@ export default function LabPage() {
           title={labIntro.title}
           lede={labIntro.lede}
         />
-        <ul className="lab-doors mt-14">
-          {experiments.map((experiment) => (
+
+        {hero ? (
+          <Link href={hero.href} className="lab-hero">
+            <span className="lab-hero-lamp" aria-hidden="true" />
+            <span className="lab-hero-copy">
+              <span className="lab-hero-vibe">{hero.vibe}</span>
+              <span className="lab-hero-title">{hero.title}</span>
+              <span className="lab-hero-blurb">{hero.blurb}</span>
+            </span>
+          </Link>
+        ) : null}
+
+        <p className="lab-drafts-kicker">v1 drafts</p>
+        <ul className="lab-doors">
+          {drafts.map((experiment) => (
             <li key={experiment.slug}>
               <Link
                 href={experiment.href}
