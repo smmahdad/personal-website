@@ -53,28 +53,6 @@ function drawWorld(
 ) {
   ctx.clearRect(0, 0, width, height);
 
-  const worm = sim.worm;
-  if (worm.length > 1) {
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
-    for (let i = worm.length - 1; i > 0; i -= 1) {
-      const a = worm[i];
-      const b = worm[i - 1];
-      if (!a || !b) continue;
-      ctx.beginPath();
-      ctx.moveTo(a.x, a.y);
-      ctx.lineTo(b.x, b.y);
-      ctx.strokeStyle = `hsla(${(i * 22 + 300) % 360} 90% 58% / 0.85)`;
-      ctx.lineWidth = 18 - i * 0.7;
-      ctx.stroke();
-    }
-  } else if (worm[0]) {
-    ctx.beginPath();
-    ctx.fillStyle = "hsla(312 90% 56% / 0.85)";
-    ctx.arc(worm[0].x, worm[0].y, 10, 0, Math.PI * 2);
-    ctx.fill();
-  }
-
   for (const body of sim.bodies) {
     const squash = 1 + body.bounce * 0.18;
     ctx.save();
@@ -119,6 +97,33 @@ function drawWorld(
       ctx.fillText(body.letter, 0, 2);
     }
     ctx.restore();
+  }
+
+  const worm = sim.worm;
+  if (worm.length > 1) {
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+    for (let i = worm.length - 1; i > 0; i -= 1) {
+      const a = worm[i];
+      const b = worm[i - 1];
+      if (!a || !b) continue;
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.lineTo(b.x, b.y);
+      ctx.strokeStyle = `hsl(${(i * 18 + 312) % 360} 92% 48%)`;
+      ctx.lineWidth = 22 - i * 0.75;
+      ctx.stroke();
+    }
+  }
+  const head = worm[0];
+  if (head) {
+    ctx.beginPath();
+    ctx.fillStyle = "#ff2d78";
+    ctx.arc(head.x, head.y, 13, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = "#1a1208";
+    ctx.stroke();
   }
 }
 
@@ -194,7 +199,14 @@ export function Playground() {
       spawnLetter(simRef.current, event.key);
     };
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    const onMove = (event: PointerEvent) => {
+      simRef.current.pointer = { x: event.clientX, y: event.clientY };
+    };
+    window.addEventListener("pointermove", onMove);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("pointermove", onMove);
+    };
   }, []);
 
   const pointFromEvent = (event: ReactPointerEvent<HTMLCanvasElement>) => {
