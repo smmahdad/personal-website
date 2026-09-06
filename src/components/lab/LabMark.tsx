@@ -1,6 +1,10 @@
 import Link from "next/link";
 
-export function LabMark({ tone }: { tone: "toys" | "craft" | "shell" }) {
+export function LabMark({
+  tone,
+}: {
+  tone: "toys" | "craft" | "shell" | "elsewhere";
+}) {
   return (
     <p className={`lab-mark lab-mark-${tone}`}>
       <Link href="/">sammah.dad</Link>
