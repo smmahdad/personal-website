@@ -12,7 +12,7 @@ describe("isNavActive", () => {
     expect(isNavActive("/lab/", "/lab/")).toBe(true);
     expect(isNavActive("/lab/toys/", "/lab/")).toBe(true);
     expect(isNavActive("/lab/craft/", "/lab/")).toBe(true);
-    expect(isNavActive("/lab/elsewhere/", "/lab/")).toBe(true);
+    expect(isNavActive("/lab/play/", "/lab/")).toBe(true);
     expect(isNavActive("/about/", "/lab/")).toBe(false);
   });
 

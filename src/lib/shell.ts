@@ -254,7 +254,7 @@ export function runShellCommand(input: string, ctx: ShellContext): ShellResult {
     }
     case "now": {
       const node = getNode(root, resolvePath(ctx.cwd, "now")) ?? getNode(root, "now");
-      if (!node || node.kind !== "file") return { lines: ["now is elsewhere. try cd ~"] };
+      if (!node || node.kind !== "file") return { lines: ["now is not here. try cd ~"] };
       return { lines: [node.text] };
     }
     case "date": {

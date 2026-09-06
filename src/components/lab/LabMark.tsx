@@ -3,7 +3,7 @@ import Link from "next/link";
 export function LabMark({
   tone,
 }: {
-  tone: "toys" | "craft" | "shell" | "elsewhere";
+  tone: "toys" | "craft" | "shell" | "play";
 }) {
   return (
     <p className={`lab-mark lab-mark-${tone}`}>

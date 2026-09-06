@@ -7,7 +7,7 @@ import "./lab.css";
 
 export const metadata: Metadata = {
   title: "Lab",
-  description: "A night house, and a few older drafts.",
+  description: "Something you can send a friend. A few older drafts downstairs.",
 };
 
 const hero = experiments.find((experiment) => experiment.tier === "hero");
@@ -25,7 +25,11 @@ export default function LabPage() {
 
         {hero ? (
           <Link href={hero.href} className="lab-hero">
-            <span className="lab-hero-lamp" aria-hidden="true" />
+            <span className="lab-hero-blobs" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </span>
             <span className="lab-hero-copy">
               <span className="lab-hero-vibe">{hero.vibe}</span>
               <span className="lab-hero-title">{hero.title}</span>
