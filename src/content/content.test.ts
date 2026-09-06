@@ -28,6 +28,12 @@ const memoirTells = [
   /soft-focus/i,
   /running preference/i,
   /occasional afternoon/i,
+  /outcome, not the ticket/i,
+  /raising the bar/i,
+  /allowed to be human/i,
+  /professional working proficiency/i,
+  /if you want more, talk to me/i,
+  /the plot/i,
 ];
 
 const metaTells = [
