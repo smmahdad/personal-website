@@ -4,16 +4,33 @@ import { writing } from "./writing";
 export const labIntro = {
   title: "Lab",
   kicker: "Play",
-  lede: "Go into the house. The old toys are still downstairs.",
+  lede: "The fun one is on top. Drafts downstairs.",
+} as const;
+
+export const playCopy = {
+  title: "play",
+  lede: "poke it.",
+  hint: "click · type · tilt",
+  press: "press me",
+  again: "again",
+  hey: "hey—",
+  dont: "don't",
+  fine: "ok fine",
+  more: "more",
+  pop: "pop",
+  flip: "flip",
+  clean: "clean",
+  tilt: "tilt",
+  wink: "no homework.",
 } as const;
 
 export const experiments = [
   {
-    slug: "elsewhere",
-    href: "/lab/elsewhere/",
-    title: "Elsewhere",
-    vibe: "bring a light",
-    blurb: "A night house. The train comes through the living room.",
+    slug: "play",
+    href: "/lab/play/",
+    title: "Play",
+    vibe: "poke it",
+    blurb: "Blobs, a button that runs, gravity you can tilt.",
     tier: "hero",
   },
   {

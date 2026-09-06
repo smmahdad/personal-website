@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
 import sitemap from "../app/sitemap";
-import { experiments, labIntro, shellRoot } from "./lab";
+import { experiments, labIntro, playCopy, shellRoot } from "./lab";
 
 describe("lab", () => {
-  it("stars the night house and parks the old toys as drafts", () => {
+  it("stars play and parks the old rooms as drafts", () => {
     expect(experiments.map((item) => item.slug)).toEqual([
-      "elsewhere",
+      "play",
       "toys",
       "craft",
       "shell",
@@ -14,13 +14,18 @@ describe("lab", () => {
     expect(experiments.slice(1).every((item) => item.tier === "draft")).toBe(
       true,
     );
-    expect(labIntro.lede).toMatch(/house/i);
+    expect(labIntro.lede).toMatch(/fun one|drafts/i);
+    expect(experiments.some((item) => item.slug === "elsewhere")).toBe(false);
+    expect(JSON.stringify({ playCopy, labIntro })).not.toMatch(
+      /house|lamp|train|sodium/i,
+    );
   });
 
   it("publishes lab routes in the sitemap", () => {
     const urls = sitemap().map((row) => row.url);
     expect(urls).toContain("https://sammah.dad/lab/");
-    expect(urls).toContain("https://sammah.dad/lab/elsewhere/");
+    expect(urls).toContain("https://sammah.dad/lab/play/");
+    expect(urls).not.toContain("https://sammah.dad/lab/elsewhere/");
     expect(urls).toContain("https://sammah.dad/lab/toys/");
     expect(urls).toContain("https://sammah.dad/lab/craft/");
     expect(urls).toContain("https://sammah.dad/lab/shell/");

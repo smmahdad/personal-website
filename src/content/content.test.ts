@@ -8,12 +8,12 @@ import { home } from "./home";
 import { grokBotLaunch, site } from "./site";
 import { latency, work } from "./work";
 import { writing, writingIntro } from "./writing";
-import { elsewhereCopy, radioLines, whispers } from "./elsewhere";
 import {
   craftCopy,
   experiments,
   fortunes,
   labIntro,
+  playCopy,
   shellMotd,
   shellRoot,
   toysCopy,
@@ -31,13 +31,11 @@ const allText = JSON.stringify({
   labIntro,
   experiments,
   toysCopy,
+  playCopy,
   craftCopy,
   shellMotd,
   shellRoot,
   fortunes,
-  elsewhereCopy,
-  radioLines,
-  whispers,
 });
 
 const memoirTells = [
@@ -97,12 +95,14 @@ describe("site content", () => {
     expect(rendered).not.toMatch(/Room for more/i);
     expect(rendered).not.toMatch(/Placeholder —/i);
     expect(rendered).not.toMatch(/invented scope/i);
+    expect(rendered).not.toMatch(/lab\/elsewhere/);
+    expect(allText).not.toMatch(/elsewhere/i);
   });
 
   it("exposes the lab from the main nav", () => {
     expect(site.nav.map((item) => item.href)).toContain("/lab/");
     expect(experiments.map((item) => item.slug)).toEqual([
-      "elsewhere",
+      "play",
       "toys",
       "craft",
       "shell",
