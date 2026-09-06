@@ -26,7 +26,8 @@ html {
 body {
   min-height: 100%;
   background:
-    radial-gradient(1200px 600px at 10% -10%, #221c12 0%, transparent 55%),
+    radial-gradient(1100px 520px at 8% -12%, #2a2114 0%, transparent 58%),
+    radial-gradient(900px 420px at 100% 8%, #1c1610 0%, transparent 46%),
     var(--color-bg);
   font-family: var(--font-sans);
   text-rendering: optimizeLegibility;
@@ -35,6 +36,59 @@ body {
 .font-display {
   font-family: var(--font-display);
   font-variation-settings: "SOFT" 36, "WONK" 1;
+}
+
+.panel {
+  border: 1px solid var(--color-line);
+  background: color-mix(in srgb, var(--color-bg-soft) 88%, transparent);
+}
+
+.lift {
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .lift:hover {
+    transform: translateY(-3px);
+  }
+}
+
+.lift:hover {
+  border-color: color-mix(in srgb, var(--color-brass) 55%, var(--color-line));
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.05rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.btn-primary {
+  background: var(--color-brass);
+  color: var(--color-bg-soft);
+}
+
+.btn-primary:hover {
+  background: var(--color-brass-hot);
+}
+
+.btn-ghost {
+  border: 1px solid var(--color-line);
+  color: var(--color-ink);
+}
+
+.btn-ghost:hover {
+  border-color: var(--color-brass);
 }
 
 ::selection {

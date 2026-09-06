@@ -23,7 +23,7 @@ export function SiteHeader({ currentPath }: { currentPath: string }) {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`text-[13px] tracking-[0.14em] uppercase transition-colors ${
+                  className={`text-[13px] tracking-[0.14em] uppercase transition-colors duration-150 ${
                     active
                       ? "text-brass"
                       : "text-muted hover:text-ink"

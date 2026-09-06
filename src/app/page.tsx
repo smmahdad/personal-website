@@ -13,74 +13,80 @@ export default function HomePage() {
           <p className="font-mono text-[11px] tracking-[0.2em] text-brass uppercase">
             {home.eyebrow}
           </p>
-          <h1 className="font-display mt-5 max-w-3xl text-5xl leading-[0.95] text-ink sm:text-7xl">
+          <h1 className="font-display mt-6 max-w-3xl text-6xl leading-[0.9] text-ink sm:text-8xl">
             {home.headline}
           </h1>
-          <p className="mt-8 max-w-xl text-xl leading-8 text-ink/90">
+          <p className="mt-8 max-w-md text-2xl leading-snug text-ink/90">
             {home.lead}
           </p>
-          <div className="mt-8 max-w-xl space-y-4 text-[17px] leading-8 text-muted">
-            {home.body.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
           <div className="mt-10 flex flex-wrap gap-3">
-            <Link
-              href="/work/"
-              className="bg-brass px-4 py-2 text-sm font-medium text-bg-soft hover:bg-brass-hot"
-            >
-              Work and systems
+            <Link href="/work/" className="btn btn-primary">
+              The work
             </Link>
-            <Link
-              href="/about/"
-              className="border border-line px-4 py-2 text-sm text-ink hover:border-brass"
-            >
-              About the person
+            <Link href="/about/" className="btn btn-ghost">
+              About
             </Link>
           </div>
         </section>
 
-        <section className="grid gap-8 border-b border-line py-14 md:grid-cols-3">
+        <section className="grid gap-4 border-b border-line py-14 sm:grid-cols-3">
           {home.now.map((item) => (
-            <article key={item.title}>
+            <article key={item.title} className="panel lift px-5 py-6">
               <p className="font-mono text-[11px] tracking-[0.16em] text-faint uppercase">
                 {item.label}
               </p>
-              <h2 className="font-display mt-2 text-2xl text-ink">
+              <h2 className="font-display mt-3 text-3xl text-ink">
                 {item.title}
               </h2>
-              <p className="mt-3 text-sm leading-7 text-muted">{item.detail}</p>
+              <p className="mt-3 text-sm leading-6 text-muted">{item.detail}</p>
             </article>
           ))}
         </section>
 
         <section className="border-b border-line py-14">
           <div className="flex items-end justify-between gap-4">
-            <h2 className="font-display text-3xl text-ink">Selected work</h2>
+            <h2 className="font-display text-3xl text-ink sm:text-4xl">
+              Selected work
+            </h2>
             <Link
               href="/work/"
               className="font-mono text-[11px] tracking-[0.14em] text-brass uppercase"
             >
-              Full stories
+              All of it
             </Link>
           </div>
+
+          <Link
+            href={home.featuredStat.href}
+            className="panel lift mt-8 block px-6 py-7 sm:px-8"
+          >
+            <p className="font-mono text-[11px] tracking-[0.16em] text-brass uppercase">
+              {home.featuredStat.kicker}
+            </p>
+            <p className="font-display mt-3 text-4xl leading-none text-ink sm:text-6xl">
+              {home.featuredStat.value}
+            </p>
+            <p className="mt-4 max-w-md text-muted">
+              {home.featuredStat.detail}
+            </p>
+          </Link>
+
           <LatencyRuler />
-          <ul className="divide-y divide-line border-t border-line">
+
+          <ul className="mt-4 grid gap-4 md:grid-cols-3">
             {work.map((story) => (
               <li key={story.id}>
                 <Link
                   href={`/work/#${story.id}`}
-                  className="group flex flex-col gap-2 py-6 sm:flex-row sm:items-baseline sm:justify-between"
+                  className="panel lift flex h-full flex-col px-5 py-6"
                 >
-                  <div>
-                    <p className="font-mono text-[11px] tracking-[0.14em] text-faint uppercase">
-                      {story.role}
-                    </p>
-                    <h3 className="font-display mt-1 text-2xl text-ink group-hover:text-brass">
-                      {story.company}
-                    </h3>
-                  </div>
-                  <p className="max-w-md text-sm leading-7 text-muted">
+                  <p className="font-mono text-[11px] tracking-[0.14em] text-faint uppercase">
+                    {story.era}
+                  </p>
+                  <h3 className="font-display mt-3 text-2xl text-ink">
+                    {story.company}
+                  </h3>
+                  <p className="mt-3 text-sm leading-6 text-muted">
                     {story.summary}
                   </p>
                 </Link>
@@ -89,56 +95,52 @@ export default function HomePage() {
           </ul>
         </section>
 
-        <section className="grid gap-10 py-14 lg:grid-cols-[1fr_1.2fr]">
+        <section className="grid gap-8 border-b border-line py-14 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
           <div>
             <p className="font-mono text-[11px] tracking-[0.2em] text-brass uppercase">
               Writing
             </p>
-            <h2 className="font-display mt-3 text-3xl text-ink">
-              One post I still send people
+            <h2 className="font-display mt-3 text-3xl text-ink sm:text-4xl">
+              One post I still send
             </h2>
           </div>
-          <article>
-            <a
-              href={writing[0].href}
-              className="block hover:text-brass"
-              rel="noreferrer"
-            >
-              <h3 className="font-display text-2xl leading-snug text-ink">
-                {writing[0].title}
-              </h3>
-            </a>
-            <p className="mt-2 font-mono text-[11px] tracking-[0.12em] text-muted uppercase">
+          <article className="panel lift px-6 py-7">
+            <p className="font-mono text-[11px] tracking-[0.12em] text-muted uppercase">
               {writing[0].publication} · {writing[0].year}
             </p>
-            <p className="mt-4 text-[16px] leading-8 text-muted">
+            <h3 className="font-display mt-3 text-2xl leading-snug text-ink">
+              <a href={writing[0].href} className="hover:text-brass" rel="noreferrer">
+                {writing[0].title}
+              </a>
+            </h3>
+            <p className="mt-4 text-[16px] leading-7 text-muted">
               {writing[0].summary}
             </p>
-            <div className="mt-6 flex gap-5 text-sm">
+            <div className="mt-6 flex flex-wrap gap-5 text-sm">
               <a
                 href={writing[0].href}
                 className="text-brass underline decoration-brass/40 underline-offset-4"
                 rel="noreferrer"
               >
-                Read on Rippling
+                Read it
               </a>
               <Link
                 href="/writing/"
                 className="text-muted underline decoration-line underline-offset-4"
               >
-                Writing index
+                Writing
               </Link>
             </div>
           </article>
         </section>
 
-        <section className="mb-16 border border-line bg-bg-soft px-6 py-10 sm:px-10">
-          <p className="font-display text-2xl text-ink sm:text-3xl">
+        <section className="panel mb-16 mt-14 px-6 py-10 sm:px-10">
+          <p className="font-display text-3xl leading-snug text-ink sm:text-4xl">
             {home.close}
           </p>
-          <p className="mt-5">
-            <Link href="/contact/" className="text-brass">
-              Contact and links →
+          <p className="mt-6">
+            <Link href="/contact/" className="btn btn-primary">
+              Say hi
             </Link>
           </p>
         </section>

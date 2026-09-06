@@ -7,7 +7,7 @@ import { work, workIntro } from "@/content/work";
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "Technical contributions: Amazon Ads measurement and frequency capping, Rippling Spend latency and leadership, and engineering at Cursor.",
+    "Amazon Ads measurement and frequency capping, Rippling Spend latency, engineering at Cursor.",
 };
 
 export default function WorkPage() {
@@ -19,17 +19,17 @@ export default function WorkPage() {
           title={workIntro.title}
           lede={workIntro.lede}
         />
-        <div className="mt-16 space-y-20">
+        <div className="mt-14 space-y-8">
           {work.map((story) => (
             <article
               key={story.id}
               id={story.id}
-              className="scroll-mt-24 border-t border-line pt-12"
+              className="panel scroll-mt-24 px-6 py-8 sm:px-8 sm:py-10"
             >
               <p className="font-mono text-[11px] tracking-[0.18em] text-faint uppercase">
                 {story.era} · {story.role}
               </p>
-              <h2 className="font-display mt-3 text-4xl text-ink">
+              <h2 className="font-display mt-3 text-4xl text-ink sm:text-5xl">
                 {story.url ? (
                   <a href={story.url} className="hover:text-brass">
                     {story.company}
@@ -43,16 +43,28 @@ export default function WorkPage() {
               </p>
               {story.id === "rippling" ? <LatencyRuler /> : null}
               {story.pullQuote ? (
-                <blockquote className="font-display my-8 max-w-2xl border-l-2 border-brass pl-5 text-2xl leading-snug text-ink">
+                <blockquote className="font-display my-8 max-w-2xl border-l-2 border-brass pl-5 text-2xl leading-snug text-ink sm:text-3xl">
                   {story.pullQuote}
                 </blockquote>
               ) : null}
-              <div className="max-w-2xl space-y-4 text-[17px] leading-8 text-muted">
-                {story.paragraphs.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
+              <ul className="mt-6 max-w-2xl space-y-3 text-[17px] leading-7 text-muted">
+                {story.lines.map((line) => (
+                  <li key={line}>{line}</li>
                 ))}
-              </div>
-              <ul className="mt-8 grid gap-4 sm:grid-cols-3">
+              </ul>
+              {story.beats?.length ? (
+                <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+                  {story.beats.map((beat) => (
+                    <li
+                      key={beat}
+                      className="border border-line bg-bg/40 px-4 py-4 text-sm leading-6 text-ink/90"
+                    >
+                      {beat}
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+              <ul className="mt-8 grid gap-3 sm:grid-cols-3">
                 {story.themes.map((theme) => (
                   <li key={theme.title} className="border border-line px-4 py-4">
                     <p className="font-mono text-[11px] tracking-[0.14em] text-brass uppercase">
@@ -65,7 +77,7 @@ export default function WorkPage() {
                 ))}
               </ul>
               {story.links?.length ? (
-                <ul className="mt-6 space-y-2 text-sm">
+                <ul className="mt-7 space-y-2 text-sm">
                   {story.links.map((link) => (
                     <li key={link.href}>
                       <a
@@ -73,7 +85,7 @@ export default function WorkPage() {
                         className="text-brass underline decoration-brass/40 underline-offset-4"
                         rel="noreferrer"
                       >
-                        {link.label}
+                        {link.label} →
                       </a>
                     </li>
                   ))}

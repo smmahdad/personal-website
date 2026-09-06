@@ -6,10 +6,12 @@ import { writing, writingIntro } from "@/content/writing";
 export const metadata: Metadata = {
   title: "Writing",
   description:
-    "Public writing by Sam Mahdad, including the Rippling Engineering post on cutting Spend authorization latency from 3.5s to 600ms.",
+    "Sam Mahdad on cutting Rippling Spend authorization latency from 3.5s to 600ms.",
 };
 
 export default function WritingPage() {
+  const piece = writing[0];
+
   return (
     <SiteShell currentPath="/writing/">
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20">
@@ -18,41 +20,42 @@ export default function WritingPage() {
           title={writingIntro.title}
           lede={writingIntro.lede}
         />
-        <ol className="mt-14 divide-y divide-line border-y border-line">
-          {writing.map((piece) => (
-            <li key={piece.href} className="py-10">
-              <p className="font-mono text-[11px] tracking-[0.16em] text-faint uppercase">
-                {piece.publication} · {piece.year}
-              </p>
-              <h2 className="font-display mt-3 max-w-3xl text-3xl leading-snug text-ink">
-                <a href={piece.href} className="hover:text-brass" rel="noreferrer">
-                  {piece.title}
-                </a>
-              </h2>
-              <p className="mt-2 text-sm text-muted">{piece.role}</p>
-              <p className="mt-5 max-w-2xl text-[17px] leading-8 text-muted">
-                {piece.summary}
-              </p>
-              <ul className="mt-6 max-w-2xl list-disc space-y-2 pl-5 text-sm leading-7 text-muted">
-                {piece.takeaways.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-              <p className="mt-6">
-                <a
-                  href={piece.href}
-                  className="text-brass underline decoration-brass/40 underline-offset-4"
-                  rel="noreferrer"
-                >
-                  Read the original →
-                </a>
-              </p>
-            </li>
-          ))}
-        </ol>
-        <p className="mt-10 max-w-xl text-sm leading-7 text-faint">
-          Room for more. If I write again, it will land in{" "}
-          <code className="font-mono text-muted">src/content/writing.ts</code>.
+
+        <article className="panel mt-14 px-6 py-8 sm:px-8 sm:py-10">
+          <p className="font-mono text-[11px] tracking-[0.16em] text-faint uppercase">
+            {piece.publication} · {piece.year}
+          </p>
+          <h2 className="font-display mt-4 max-w-3xl text-3xl leading-snug text-ink sm:text-4xl">
+            <a href={piece.href} className="hover:text-brass" rel="noreferrer">
+              {piece.title}
+            </a>
+          </h2>
+          <p className="mt-3 text-sm text-muted">{piece.role}</p>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-ink/90">
+            {piece.summary}
+          </p>
+          <ol className="mt-8 grid gap-3 sm:grid-cols-2">
+            {piece.takeaways.map((item, index) => (
+              <li
+                key={item}
+                className="border border-line bg-bg/40 px-4 py-4 text-sm leading-6 text-muted"
+              >
+                <span className="font-mono text-[11px] text-brass">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <p className="mt-2 text-ink/90">{item}</p>
+              </li>
+            ))}
+          </ol>
+          <p className="mt-8">
+            <a href={piece.href} className="btn btn-primary" rel="noreferrer">
+              Read the original
+            </a>
+          </p>
+        </article>
+
+        <p className="mt-12 max-w-md font-display text-2xl text-ink">
+          {writingIntro.close}
         </p>
       </div>
     </SiteShell>
