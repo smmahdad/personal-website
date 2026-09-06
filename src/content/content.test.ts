@@ -8,6 +8,15 @@ import { home } from "./home";
 import { grokBotLaunch, site } from "./site";
 import { latency, work } from "./work";
 import { writing, writingIntro } from "./writing";
+import {
+  craftCopy,
+  experiments,
+  fortunes,
+  labIntro,
+  shellMotd,
+  shellRoot,
+  toysCopy,
+} from "./lab";
 
 const allText = JSON.stringify({
   site,
@@ -18,6 +27,13 @@ const allText = JSON.stringify({
   writing,
   writingIntro,
   contact,
+  labIntro,
+  experiments,
+  toysCopy,
+  craftCopy,
+  shellMotd,
+  shellRoot,
+  fortunes,
 });
 
 const memoirTells = [
@@ -77,6 +93,15 @@ describe("site content", () => {
     expect(rendered).not.toMatch(/Room for more/i);
     expect(rendered).not.toMatch(/Placeholder —/i);
     expect(rendered).not.toMatch(/invented scope/i);
+  });
+
+  it("exposes the lab from the main nav", () => {
+    expect(site.nav.map((item) => item.href)).toContain("/lab/");
+    expect(experiments.map((item) => item.slug)).toEqual([
+      "toys",
+      "craft",
+      "shell",
+    ]);
   });
 
   it("identifies Sam and the public domain", () => {

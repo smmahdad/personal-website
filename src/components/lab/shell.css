@@ -1,0 +1,218 @@
+.shell-session {
+  --sh-bg: #0b0e0a;
+  --sh-fg: #c8f2a8;
+  --sh-dim: #739265;
+  --sh-amber: #f0c36a;
+  --sh-red: #ff7a55;
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  background: var(--sh-bg);
+  color: var(--sh-fg);
+  font-family: var(--font-mono);
+}
+
+.shell-session::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 2px,
+    rgba(0, 0, 0, 0.14) 3px
+  );
+  opacity: 0.35;
+}
+
+.lab-mark-shell {
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--sh-dim);
+}
+
+.lab-mark-shell a {
+  color: var(--sh-amber);
+  text-decoration: none;
+}
+
+.lab-mark-shell a:hover,
+.lab-mark-shell a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.shell-top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.6rem 1rem;
+  padding: 0.85rem 1rem 0.7rem;
+  border-bottom: 1px solid #1d2a18;
+}
+
+.shell-pwd {
+  font-size: 0.75rem;
+  color: var(--sh-dim);
+}
+
+.shell-body {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  flex: 1;
+  min-height: 0;
+}
+
+.shell-term {
+  padding: 0.9rem 1rem 1.1rem;
+  overflow: auto;
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.shell-line {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.shell-line[data-kind="in"] {
+  color: var(--sh-amber);
+}
+
+.shell-line a {
+  color: var(--sh-amber);
+}
+
+.shell-form {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-top: 0.35rem;
+}
+
+.shell-form label {
+  color: var(--sh-amber);
+  white-space: nowrap;
+}
+
+.shell-form input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: var(--sh-fg);
+  font: inherit;
+  caret-color: var(--sh-fg);
+}
+
+.shell-form input:focus {
+  outline: none;
+}
+
+.shell-files {
+  border-top: 1px solid #1d2a18;
+  padding: 0.85rem 1rem 1rem;
+  background: #080a07;
+}
+
+.shell-files h2 {
+  margin: 0 0 0.55rem;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sh-dim);
+}
+
+.shell-tree {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.shell-tree button {
+  appearance: none;
+  border: 0;
+  background: none;
+  padding: 0.28rem 0;
+  color: var(--sh-fg);
+  font: inherit;
+  font-size: 0.8rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.shell-tree button[data-kind="dir"] {
+  color: var(--sh-amber);
+}
+
+.shell-chips {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0.7rem 1rem 1rem;
+  border-top: 1px solid #1d2a18;
+}
+
+.shell-chips button,
+.shell-chips a {
+  appearance: none;
+  border: 1px solid #2a3c22;
+  background: #10150e;
+  color: var(--sh-fg);
+  font: inherit;
+  font-size: 0.72rem;
+  padding: 0.38rem 0.55rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.shell-vim {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100dvh - 3.2rem);
+  padding: 0.8rem 1rem 1rem;
+}
+
+.shell-vim pre {
+  flex: 1;
+  margin: 0;
+  color: var(--sh-dim);
+  font: inherit;
+  line-height: 1.45;
+}
+
+.shell-vim-bar {
+  color: var(--sh-bg);
+  background: var(--sh-fg);
+  padding: 0.15rem 0.4rem;
+  font-size: 0.8rem;
+}
+
+@media (min-width: 880px) {
+  .shell-body {
+    grid-template-columns: minmax(0, 1fr) 16.5rem;
+  }
+
+  .shell-files {
+    border-top: 0;
+    border-left: 1px solid #1d2a18;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shell-session::after {
+    display: none;
+  }
+}
