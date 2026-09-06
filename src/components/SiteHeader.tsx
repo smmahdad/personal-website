@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { site } from "@/content/site";
+import { isNavActive } from "@/lib/nav";
 import { MobileNav } from "./MobileNav";
 
 export function SiteHeader({ currentPath }: { currentPath: string }) {
@@ -16,9 +17,7 @@ export function SiteHeader({ currentPath }: { currentPath: string }) {
           {site.nav
             .filter((item) => item.href !== "/")
             .map((item) => {
-              const active =
-                currentPath === item.href ||
-                currentPath === item.href.replace(/\/$/, "");
+              const active = isNavActive(currentPath, item.href);
               return (
                 <Link
                   key={item.href}

@@ -1,0 +1,112 @@
+.lab-doors {
+  display: grid;
+  gap: 1rem;
+}
+
+.lab-door {
+  display: flex;
+  min-height: 16rem;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.3rem 1.35rem 1.4rem;
+  text-decoration: none;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.lab-door:hover,
+.lab-door:focus-visible {
+  transform: translateY(-3px);
+}
+
+.lab-door-vibe {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: lowercase;
+}
+
+.lab-door-title,
+.lab-door-blurb {
+  display: block;
+}
+
+.lab-door-title {
+  margin: 1.6rem 0 0;
+  line-height: 0.9;
+}
+
+.lab-door-blurb {
+  margin: 0.7rem 0 0;
+}
+
+.lab-door-toys {
+  background: #fff1b8;
+  color: #1a1208;
+  border: 3px solid #1a1208;
+  box-shadow: 6px 6px 0 #1a1208;
+}
+
+.lab-door-toys .lab-door-title {
+  font-family: var(--font-display);
+  font-size: 3.4rem;
+  color: #ff3d6e;
+  transform: rotate(-3deg);
+  transform-origin: left center;
+}
+
+.lab-door-craft {
+  background: #070707;
+  color: #f4f0e8;
+  border: 1px solid #2a2a2a;
+}
+
+.lab-door-craft .lab-door-vibe {
+  letter-spacing: 0.22em;
+  color: #c9a46a;
+}
+
+.lab-door-craft .lab-door-title {
+  font-family: var(--font-display);
+  font-size: 3.8rem;
+  letter-spacing: -0.06em;
+}
+
+.lab-door-craft .lab-door-blurb {
+  color: #6d675c;
+  font-size: 0.92rem;
+}
+
+.lab-door-shell {
+  background: #0b0e0a;
+  color: #c8f2a8;
+  border: 1px solid #1d2a18;
+  font-family: var(--font-mono);
+}
+
+.lab-door-shell .lab-door-vibe {
+  color: #f0c36a;
+}
+
+.lab-door-shell .lab-door-title {
+  font-size: 2.2rem;
+}
+
+.lab-door-shell .lab-door-title::before {
+  content: "$ ";
+  color: #739265;
+}
+
+@media (min-width: 900px) {
+  .lab-doors {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lab-door:hover,
+  .lab-door:focus-visible {
+    transform: none;
+  }
+}

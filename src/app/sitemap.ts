@@ -1,10 +1,19 @@
 import type { MetadataRoute } from "next";
+import { experiments } from "@/content/lab";
 import { site } from "@/content/site";
 
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ["", "/about/", "/work/", "/writing/", "/contact/"];
+  const routes = [
+    "",
+    "/about/",
+    "/work/",
+    "/writing/",
+    "/contact/",
+    "/lab/",
+    ...experiments.map((experiment) => experiment.href),
+  ];
 
   return routes.map((route) => ({
     url: `${site.url}${route || "/"}`,

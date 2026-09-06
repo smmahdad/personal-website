@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useId, useState } from "react";
 import { site } from "@/content/site";
+import { isNavActive } from "@/lib/nav";
 
 export function MobileNav({ currentPath }: { currentPath: string }) {
   const [open, setOpen] = useState(false);
@@ -36,9 +37,7 @@ export function MobileNav({ currentPath }: { currentPath: string }) {
         >
           <ul className="flex flex-col gap-3">
             {site.nav.map((item) => {
-              const active =
-                currentPath === item.href ||
-                currentPath === item.href.replace(/\/$/, "");
+              const active = isNavActive(currentPath, item.href);
               return (
                 <li key={item.href}>
                   <Link

@@ -1,0 +1,267 @@
+.toys-desk {
+  --toys-ink: #1a1208;
+  --toys-hot: #ff3d6e;
+  --toys-blue: #2f6dff;
+  --toys-lime: #c6ff3d;
+  --toys-cream: #fffaf1;
+  position: relative;
+  isolation: isolate;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  color: var(--toys-ink);
+  background: #ffe27a;
+}
+
+.lab-mark-toys {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+}
+
+.lab-mark-toys a {
+  color: var(--toys-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.toys-head {
+  position: relative;
+  z-index: 1;
+  padding: 1.1rem 1.2rem 0;
+}
+
+.toys-title {
+  margin: 0.35rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(4.4rem, 16vw, 8.4rem);
+  line-height: 0.78;
+  letter-spacing: -0.06em;
+  color: var(--toys-hot);
+  transform: rotate(-2.5deg);
+  transform-origin: left bottom;
+}
+
+.toys-title button {
+  appearance: none;
+  border: 0;
+  background: none;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.toys-lede {
+  margin: 0.85rem 0 0;
+  max-width: 18rem;
+  font-size: 1.1rem;
+  line-height: 1.3;
+}
+
+.toys-stage {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 1rem;
+  padding: 0 1.2rem 2.4rem;
+}
+
+.toys-card {
+  background: var(--toys-cream);
+  border: 3px solid var(--toys-ink);
+  box-shadow: 6px 6px 0 var(--toys-ink);
+  padding: 1.05rem 1.1rem 1.15rem;
+}
+
+.toys-card h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  line-height: 1;
+}
+
+.toys-card p {
+  margin: 0.4rem 0 0;
+  font-size: 0.9rem;
+}
+
+.toys-agent {
+  margin: 1.1rem 1.2rem 1rem;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.toys-modes,
+.toys-actions,
+.toys-letters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+}
+
+.toys-modes button,
+.toys-arm,
+.toys-hit,
+.toys-letters button {
+  appearance: none;
+  border: 2px solid var(--toys-ink);
+  background: var(--toys-cream);
+  color: var(--toys-ink);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.toys-modes button,
+.toys-letters button {
+  padding: 0.35rem 0.5rem;
+}
+
+.toys-modes button[aria-pressed="true"] {
+  background: var(--toys-ink);
+  color: var(--toys-cream);
+}
+
+.toys-charge {
+  margin-top: 0.85rem;
+  min-height: 11rem;
+}
+
+.toys-swipe-card {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 5.2rem;
+  padding: 0.9rem 1rem;
+  border: 2px solid var(--toys-ink);
+  background: #fff;
+  color: inherit;
+  font: inherit;
+  box-shadow: 4px 4px 0 var(--toys-ink);
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.toys-swipe-card:disabled {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.toys-swipe-card strong {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+}
+
+.toys-bar {
+  margin: 0.8rem 0;
+  height: 12px;
+  border: 2px solid var(--toys-ink);
+  background: #fff;
+}
+
+.toys-bar > span {
+  display: block;
+  height: 100%;
+  background: var(--toys-hot);
+}
+
+.toys-arm,
+.toys-hit {
+  padding: 0.65rem 0.8rem;
+}
+
+.toys-hit {
+  background: var(--toys-lime);
+}
+
+.toys-hit:disabled,
+.toys-arm:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.toys-status {
+  margin-top: 0.65rem;
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+.toys-status[data-tone="ok"] {
+  color: #148a3c;
+}
+
+.toys-status[data-tone="no"] {
+  color: var(--toys-hot);
+}
+
+.toys-score {
+  margin-top: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.toys-canvas {
+  display: block;
+  width: 100%;
+  height: 9.5rem;
+  margin-top: 0.7rem;
+  border: 2px solid var(--toys-ink);
+  background: #fff8d8;
+  touch-action: none;
+}
+
+.toys-sign {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 0.6rem;
+}
+
+.toys-hand {
+  width: 5.2rem;
+  height: auto;
+}
+
+.toys-sign strong {
+  font-family: var(--font-display);
+  font-size: 4.2rem;
+  line-height: 0.8;
+}
+
+.toys-word {
+  min-height: 1.2rem;
+  font-family: var(--font-mono);
+  letter-spacing: 0.18em;
+}
+
+.toys-letters button {
+  min-width: 1.7rem;
+}
+
+@media (min-width: 900px) {
+  .toys-stage {
+    grid-template-columns: 1fr 1fr;
+    padding: 0 2rem 3rem;
+  }
+
+  .toys-agent {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    grid-template-columns: auto 1fr auto;
+    align-items: end;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toys-swipe-card {
+    transition: none;
+  }
+}
