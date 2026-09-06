@@ -1,0 +1,14 @@
+# sammah.dad on penisland2. Host port 8082 so it does not collide with
+# karajournal :8080 or tide :8081.
+# TLS is terminated on penisland Apache → http://192.168.0.137:8082/
+
+name: sammah-dad
+
+services:
+  web:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "8082:80"
