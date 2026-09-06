@@ -2,7 +2,7 @@
 
 Personal site for [Sam Mahdad](https://sammah.dad). First-person, public facts only, edited from `src/content/`.
 
-The domain currently redirects from Squarespace. This repo is the replacement. DNS cutover comes later.
+Hosted like karajournal: Docker on penisland2, TLS on penisland Apache. DNS still lives at Squarespace until cutover (see [infra/docs/deploy.md](infra/docs/deploy.md)).
 
 ## Local
 
@@ -51,37 +51,38 @@ To add a post, append an object to `writing`.
 
 ## Deploy
 
-The build is a static export (`output: "export"`). `./out` can go to GitHub Pages, Vercel, or any static host.
+Production is the house stack (same path as karajournal / tide):
 
-### Vercel (simplest for this repo)
+```
+Browser → sammah.dad → 67.243.35.252
+  → penisland Apache (TLS)
+  → penisland2 nginx :8082 (this repo, static export)
+```
 
-1. Import [smmahdad/personal-website](https://github.com/smmahdad/personal-website).
-2. Framework preset: Next.js. Build command `npm run build`. Output `out` is produced automatically; Vercel understands `output: "export"`.
-3. After the Squarespace redirect is retired, add `sammah.dad` and `www.sammah.dad` in Vercel → Domains.
-4. Point the domain registrar at Vercel’s nameservers or add the A / CNAME records Vercel shows.
+Push `main`, then:
 
-No environment variables are required for production on the apex domain.
+```bash
+bash infra/scripts/remote-pull-up.sh
+```
 
-### GitHub Pages
+Full Apache / certbot / Squarespace steps: [infra/docs/deploy.md](infra/docs/deploy.md).
 
-A workflow lives at `.github/workflows/pages.yml`.
+The build is a static export (`output: "export"`). No environment variables. Leave `NEXT_PUBLIC_BASE_PATH` unset for the apex domain.
 
-1. Repo Settings → Pages → Source: **GitHub Actions**.
-2. Push to `main` (or run the workflow manually).
-3. For the apex domain later: Settings → Pages → Custom domain → `sammah.dad`, then add the DNS records GitHub shows. Do **not** add a `CNAME` file or change DNS while Squarespace still owns the redirect, unless you are ready to cut over.
-4. If you ever serve this as `https://smmahdad.github.io/personal-website/` without a custom domain, build with:
+### Squarespace (registrar)
 
-   ```bash
-   NEXT_PUBLIC_BASE_PATH=/personal-website npm run build
-   ```
+Keep Squarespace DNS. Point A records at the house IP, then we can finish TLS:
 
-   `next.config.ts` reads that env var. Apex `sammah.dad` should leave it unset.
+| Type | Host | Data |
+| --- | --- | --- |
+| A | `@` | `67.243.35.252` |
+| A | `www` | `67.243.35.252` |
 
-### After DNS cutover
+Delete the current Squarespace parking A/CNAME records (`198.185.159.*`, `ext-sq.squarespace.com`) and turn off domain forwarding. Details in the deploy doc.
 
-- Keep Squarespace’s redirect only until the new host answers HTTPS on `sammah.dad`.
-- Add `www` or not — the site does not assume a www host.
-- Set a mailbox later if you want `hello@sammah.dad`; the content file is already wired for it.
+### GitHub Pages (optional fallback)
+
+A workflow lives at `.github/workflows/pages.yml`. Do not put the apex domain on Pages while Apache is serving it.
 
 ## Design notes
 
