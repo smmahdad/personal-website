@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { LatencyRuler } from "@/components/LatencyRuler";
+import { LaunchBadge } from "@/components/LaunchBadge";
 import { PageIntro } from "@/components/PageIntro";
 import { SiteShell } from "@/components/SiteShell";
 import { work, workIntro } from "@/content/work";
@@ -41,6 +42,15 @@ export default function WorkPage() {
               <p className="mt-4 max-w-2xl text-lg leading-8 text-ink/90">
                 {story.summary}
               </p>
+              {story.badge ? (
+                <p className="mt-6">
+                  <LaunchBadge
+                    href={story.badge.href}
+                    kicker={story.badge.kicker}
+                    label={story.badge.label}
+                  />
+                </p>
+              ) : null}
               {story.id === "rippling" ? <LatencyRuler /> : null}
               {story.pullQuote ? (
                 <blockquote className="font-display my-8 max-w-2xl border-l-2 border-brass pl-5 text-2xl leading-snug text-ink sm:text-3xl">

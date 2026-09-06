@@ -91,4 +91,4 @@ Warm dark page, Fraunces + IBM Plex, brass on ink. The latency ruler on Home and
 
 ## Facts policy
 
-Copy is based on public LinkedIn, the Rippling Engineering blog post, and public posts. Soft on Cursor title/date. No private product detail.
+Copy is based on public LinkedIn, the Rippling Engineering blog post, the Grok Bot Product Hunt launch, and public posts. Soft on Cursor title/date. No private product detail.
