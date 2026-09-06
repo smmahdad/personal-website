@@ -60,7 +60,7 @@ export function getNode(root: FsDir, path: string): FsNode | null {
   let node: FsNode = root;
   for (const part of path.split("/")) {
     if (node.kind !== "dir") return null;
-    const next = node.children[part];
+    const next: FsNode | undefined = node.children[part];
     if (!next) return null;
     node = next;
   }
