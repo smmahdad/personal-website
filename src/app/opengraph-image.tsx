@@ -4,6 +4,7 @@ import { site } from "@/content/site";
 export const alt = `${site.name} — ${site.domain}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+export const dynamic = "force-static";
 
 export default function OpenGraphImage() {
   return new ImageResponse(
@@ -18,7 +19,6 @@ export default function OpenGraphImage() {
           background: "#100e0b",
           color: "#f4ecdc",
           padding: "72px 80px",
-          fontFamily: "Georgia, Times New Roman, serif",
         }}
       >
         <div
@@ -26,9 +26,7 @@ export default function OpenGraphImage() {
             display: "flex",
             fontSize: 22,
             letterSpacing: "0.22em",
-            textTransform: "lowercase",
             color: "#d4a45a",
-            fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
           }}
         >
           {site.domain}
@@ -36,6 +34,7 @@ export default function OpenGraphImage() {
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div
             style={{
+              display: "flex",
               fontSize: 92,
               lineHeight: 0.95,
               letterSpacing: "-0.03em",
@@ -45,6 +44,7 @@ export default function OpenGraphImage() {
           </div>
           <div
             style={{
+              display: "flex",
               marginTop: 28,
               fontSize: 30,
               lineHeight: 1.35,
@@ -52,8 +52,7 @@ export default function OpenGraphImage() {
               maxWidth: 820,
             }}
           >
-            {site.currentRole.title} at {site.currentRole.company}. Previously
-            Rippling Spend and Amazon Ads.
+            {`${site.currentRole.title} at ${site.currentRole.company}. Previously Rippling Spend and Amazon Ads.`}
           </div>
         </div>
         <div
@@ -62,11 +61,10 @@ export default function OpenGraphImage() {
             justifyContent: "space-between",
             fontSize: 20,
             color: "#6f6658",
-            fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
           }}
         >
-          <span>{site.location}</span>
-          <span>p99 3.5s → 600ms</span>
+          <div style={{ display: "flex" }}>{site.location}</div>
+          <div style={{ display: "flex" }}>p99 3.5s → 600ms</div>
         </div>
       </div>
     ),
