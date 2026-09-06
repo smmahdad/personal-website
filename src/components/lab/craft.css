@@ -98,12 +98,13 @@
 .craft-disc {
   position: fixed;
   z-index: 3;
-  width: 34px;
-  height: 12px;
+  width: 46px;
+  height: 16px;
   padding: 0;
   border: 0;
   border-radius: 99px;
   background: var(--craft-gold);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--craft-ink) 25%, transparent);
   transform: translate(-50%, -50%);
   touch-action: none;
 }

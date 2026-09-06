@@ -45,7 +45,7 @@ export function CraftStudio() {
   const moteBox = useRef<HTMLDivElement>(null);
   const qpsEl = useRef<HTMLSpanElement>(null);
   const budgetRef = useRef<(typeof BUDGETS)[number]>(4000);
-  const disc = useRef({ x: 72, y: 72, vx: 0, vy: 0 });
+  const disc = useRef({ x: 0, y: 0, vx: 0, vy: 0 });
   const time = useSyncExternalStore(subscribeClock, nyTime, () => "--:--:--");
   const fine = useSyncExternalStore(
     subscribeFinePointer,
@@ -106,6 +106,10 @@ export function CraftStudio() {
       }
       if (hairEl.current) hairEl.current.style.top = `${mouse.current.y}px`;
 
+      if (disc.current.x === 0 && disc.current.y === 0) {
+        disc.current.x = window.innerWidth * 0.82;
+        disc.current.y = window.innerHeight * 0.58;
+      }
       disc.current.vx *= 0.99;
       disc.current.vy *= 0.99;
       disc.current.x = Math.max(18, Math.min(window.innerWidth - 18, disc.current.x + disc.current.vx));
