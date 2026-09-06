@@ -19,7 +19,9 @@
   user-select: none;
   --lx: 30%;
   --ly: 58%;
-  --lr: 168px;
+  --lr: 220px;
+  --sx: 18%;
+  --sy: 42%;
 }
 
 .elsewhere:focus {
@@ -113,13 +115,13 @@
   position: absolute;
   overflow: hidden;
   box-shadow:
-    inset 0 0 0 1px rgba(255, 200, 140, 0.06),
+    inset 0 0 0 1px rgba(255, 210, 150, 0.16),
     0 30px 80px rgba(0, 0, 0, 0.45);
 }
 
 .el-stoop {
   background:
-    linear-gradient(#2a1c14, #1a120e 62%, #12100f);
+    linear-gradient(#4a3224, #2c1c14 62%, #1c1410);
   border-right: 10px solid #120c0a;
 }
 
@@ -131,8 +133,8 @@
   height: 210px;
   background:
     repeating-linear-gradient(
-      #3a2a20 0 28px,
-      #2a1c16 28px 34px
+      #6a4a34 0 28px,
+      #3a2418 28px 34px
     );
   clip-path: polygon(0 18%, 100% 0, 100% 100%, 0 100%);
   box-shadow: inset 0 8px 20px rgba(0, 0, 0, 0.35);
@@ -156,10 +158,10 @@
   bottom: 150px;
   width: 118px;
   height: 250px;
-  background: #140e0c;
+  background: #1c100c;
   box-shadow:
-    inset 0 0 0 8px #2c1c14,
-    0 0 40px rgba(255, 140, 50, 0.08);
+    inset 0 0 0 8px #4a2c1c,
+    0 0 50px rgba(255, 150, 60, 0.28);
 }
 
 .el-transom {
@@ -218,8 +220,8 @@
   background:
     repeating-linear-gradient(
       90deg,
-      #241810 0 28px,
-      #1c1410 28px 32px
+      #3a2418 0 28px,
+      #2a1a12 28px 32px
     );
 }
 
@@ -287,7 +289,7 @@
 
 .el-living {
   background:
-    linear-gradient(#2a1c14 0 70px, #1e1612 70px);
+    linear-gradient(#4a2c1c 0 70px, #2c1c16 70px);
 }
 
 .el-ceiling-hole {
@@ -317,10 +319,10 @@
 
 .el-window {
   position: absolute;
-  background: #0b1220;
+  background: #142038;
   box-shadow:
-    inset 0 0 0 10px #2a1c14,
-    0 0 40px rgba(120, 180, 255, 0.12);
+    inset 0 0 0 10px #3a2418,
+    0 0 70px rgba(140, 200, 255, 0.35);
 }
 
 .el-sash {
@@ -497,8 +499,8 @@
 .el-kitchen {
   background:
     repeating-linear-gradient(
-      #2a1c16 0 36px,
-      #221610 36px 38px
+      #3a241c 0 36px,
+      #2a1812 36px 38px
     );
 }
 
@@ -598,7 +600,7 @@
 
 .el-roof {
   background:
-    linear-gradient(#1a1618, #121014 70%, #2a2018);
+    linear-gradient(#2a2228, #161218 70%, #3a2c22);
   overflow: visible;
 }
 
@@ -663,8 +665,8 @@
 .el-well {
   background:
     repeating-linear-gradient(
-      #2a1612 0 22px,
-      #1a0e0c 22px 26px
+      #4a2218 0 22px,
+      #2a120e 22px 26px
     );
 }
 
@@ -833,23 +835,19 @@
   inset: 0;
   pointer-events: none;
   z-index: 6;
-  background: radial-gradient(
-    circle var(--lr) at var(--lx) var(--ly),
-    transparent 0 28%,
-    rgba(6, 5, 10, 0.22) 46%,
-    rgba(6, 5, 10, 0.72) 68%,
-    rgba(6, 5, 10, 0.93) 100%
-  );
+  background: rgba(6, 5, 10, 0.8);
+  -webkit-mask-image:
+    radial-gradient(circle var(--lr) at var(--lx) var(--ly), transparent 0 44%, #000 78%),
+    radial-gradient(circle 210px at var(--sx) var(--sy), transparent 0 38%, #000 72%);
+  mask-image:
+    radial-gradient(circle var(--lr) at var(--lx) var(--ly), transparent 0 44%, #000 78%),
+    radial-gradient(circle 210px at var(--sx) var(--sy), transparent 0 38%, #000 72%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
 }
 
 .elsewhere[data-mood="cool"] .elsewhere-dark {
-  background: radial-gradient(
-    circle var(--lr) at var(--lx) var(--ly),
-    transparent 0 30%,
-    rgba(6, 10, 16, 0.28) 50%,
-    rgba(4, 8, 14, 0.8) 72%,
-    rgba(3, 6, 12, 0.94) 100%
-  );
+  background: rgba(4, 8, 14, 0.78);
 }
 
 .elsewhere-fx,
@@ -1014,11 +1012,6 @@
   }
 
   .elsewhere-dark {
-    background: radial-gradient(
-      circle var(--lr) at var(--lx) var(--ly),
-      transparent 0 40%,
-      rgba(6, 5, 10, 0.35) 70%,
-      rgba(6, 5, 10, 0.62) 100%
-    );
+    background: rgba(6, 5, 10, 0.45);
   }
 }

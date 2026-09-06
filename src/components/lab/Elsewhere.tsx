@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { elsewhereCopy } from "@/content/elsewhere";
 import {
+  STREET_LAMP,
   TRAIN,
   createSim,
   emptyInput,
@@ -187,9 +188,12 @@ export function Elsewhere() {
       root.dataset.room = roomAt(sim.lamp.x, sim.lamp.y);
       root.dataset.radio = sim.radioOn ? "on" : "off";
       root.dataset.fridge = sim.fridgeOpen ? "open" : "shut";
+      const street = worldToScreen(STREET_LAMP.x, STREET_LAMP.y, sim.camera, scale);
       root.style.setProperty("--lx", `${lamp.x}px`);
       root.style.setProperty("--ly", `${lamp.y}px`);
       root.style.setProperty("--lr", `${radius}px`);
+      root.style.setProperty("--sx", `${street.x}px`);
+      root.style.setProperty("--sy", `${street.y}px`);
 
       glow.style.transform = `translate3d(${lamp.x}px, ${lamp.y}px, 0)`;
 

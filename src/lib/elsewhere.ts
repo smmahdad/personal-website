@@ -218,11 +218,12 @@ export function createSim(): Sim {
 export function lampRadius(sim: Sim, reducedMotion = false): number {
   if (reducedMotion) return 340;
   const room = roomAt(sim.lamp.x, sim.lamp.y);
-  let radius = 168;
-  if (room === "roof") radius = 220;
-  if (room === "well") radius = 128;
-  if (room === "night") radius = 148;
-  if (room === "under") radius = 156;
+  let radius = 220;
+  if (room === "stoop") radius = 250;
+  if (room === "roof") radius = 280;
+  if (room === "well") radius = 168;
+  if (room === "night") radius = 200;
+  if (room === "under") radius = 200;
   if (sim.fridgeOpen && room === "kitchen") radius = 248;
   if (sim.stillness > 6) radius *= 0.7;
   return radius;
