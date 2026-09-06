@@ -126,8 +126,8 @@ export function clamp(n: number, min: number, max: number): number {
   return Math.max(min, Math.min(max, n));
 }
 
-export function viewScale(viewH: number): number {
-  return viewH / 920;
+export function viewScale(viewW: number, viewH: number): number {
+  return Math.max(viewH / 880, viewW / 1400);
 }
 
 export function contains(rect: Rect, x: number, y: number, pad = 0): boolean {
@@ -489,7 +489,7 @@ function stepMoths(sim: Sim, d: number, reduced: boolean) {
 }
 
 function stepCamera(sim: Sim, input: Input, d: number) {
-  const scale = viewScale(input.view.h);
+  const scale = viewScale(input.view.w, input.view.h);
   const viewW = input.view.w / scale;
   const viewH = input.view.h / scale;
   const targetX = sim.lamp.x - viewW * 0.5;

@@ -99,7 +99,7 @@ export function Elsewhere() {
 
     const pointFromEvent = (event: PointerEvent) => {
       const rect = root.getBoundingClientRect();
-      const scale = viewScale(input.view.h);
+      const scale = viewScale(input.view.w, input.view.h);
       return screenToWorld(
         event.clientX - rect.left,
         event.clientY - rect.top,
@@ -174,7 +174,7 @@ export function Elsewhere() {
       input.typed = null;
       input.pointer = null;
 
-      const scale = viewScale(input.view.h);
+      const scale = viewScale(input.view.w, input.view.h);
       const tilt = reduced ? 0 : cameraTilt(sim);
       const shakeX = reduced ? 0 : (Math.random() - 0.5) * sim.shake;
       const shakeY = reduced ? 0 : (Math.random() - 0.5) * sim.shake;

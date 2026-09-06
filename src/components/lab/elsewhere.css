@@ -835,19 +835,30 @@
   inset: 0;
   pointer-events: none;
   z-index: 6;
-  background: rgba(6, 5, 10, 0.8);
-  -webkit-mask-image:
-    radial-gradient(circle var(--lr) at var(--lx) var(--ly), transparent 0 44%, #000 78%),
-    radial-gradient(circle 210px at var(--sx) var(--sy), transparent 0 38%, #000 72%);
-  mask-image:
-    radial-gradient(circle var(--lr) at var(--lx) var(--ly), transparent 0 44%, #000 78%),
-    radial-gradient(circle 210px at var(--sx) var(--sy), transparent 0 38%, #000 72%);
-  -webkit-mask-composite: source-in;
-  mask-composite: intersect;
+  background:
+    radial-gradient(
+      circle var(--lr) at var(--lx) var(--ly),
+      transparent 0 50%,
+      rgba(6, 5, 10, 0.08) 64%,
+      rgba(6, 5, 10, 0.4) 80%,
+      rgba(6, 5, 10, 0.7) 100%
+    ),
+    radial-gradient(
+      circle 230px at var(--sx) var(--sy),
+      transparent 0 42%,
+      rgba(6, 5, 10, 0.15) 100%
+    );
 }
 
 .elsewhere[data-mood="cool"] .elsewhere-dark {
-  background: rgba(4, 8, 14, 0.78);
+  background:
+    radial-gradient(
+      circle var(--lr) at var(--lx) var(--ly),
+      transparent 0 50%,
+      rgba(4, 8, 14, 0.1) 64%,
+      rgba(4, 8, 14, 0.42) 80%,
+      rgba(4, 8, 14, 0.7) 100%
+    );
 }
 
 .elsewhere-fx,
