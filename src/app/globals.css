@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-ibm-sans), "IBM Plex Sans", ui-sans-serif, system-ui,
+    sans-serif;
+  --font-display: var(--font-fraunces), "Fraunces", ui-serif, Georgia, serif;
+  --font-mono: var(--font-ibm-mono), "IBM Plex Mono", ui-monospace, monospace;
+  --color-bg: #100e0b;
+  --color-bg-soft: #18150f;
+  --color-ink: #f4ecdc;
+  --color-muted: #a89b86;
+  --color-faint: #6f6658;
+  --color-line: #2a241a;
+  --color-brass: #d4a45a;
+  --color-brass-hot: #e8b86a;
+  --color-copper: #c96a45;
+  --color-paper: #efe6d2;
+  --color-paper-ink: #1c1812;
+}
+
+html {
+  background: var(--color-bg);
+  color: var(--color-ink);
+}
+
+body {
+  min-height: 100%;
+  background:
+    radial-gradient(1200px 600px at 10% -10%, #221c12 0%, transparent 55%),
+    var(--color-bg);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  font-variation-settings: "SOFT" 36, "WONK" 1;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-brass) 40%, transparent);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brass);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
