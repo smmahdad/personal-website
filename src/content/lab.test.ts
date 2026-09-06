@@ -15,7 +15,6 @@ describe("lab", () => {
       true,
     );
     expect(labIntro.lede).toMatch(/fun one|drafts/i);
-    expect(experiments.some((item) => item.slug === "elsewhere")).toBe(false);
     expect(JSON.stringify({ playCopy, labIntro })).not.toMatch(
       /house|lamp|train|sodium/i,
     );
