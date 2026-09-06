@@ -31,7 +31,7 @@ export type WorkStory = {
 export const workIntro = {
   title: "Work",
   kicker: "What I built",
-  lede: "Amazon at high QPS. Rippling under a four-second budget. Cursor now.",
+  lede: "Amazon at high QPS. Rippling under a four-second budget. Cursor now — Grok Bot hit #2.",
 } as const;
 
 export const work: WorkStory[] = [
@@ -43,21 +43,20 @@ export const work: WorkStory[] = [
     url: "https://cursor.com",
     summary: "I'm at Cursor. Maker on Grok Bot. #2 of the day.",
     lines: [
-      "Working on the product. If you want more, talk to me.",
-      "Maker on the Grok Bot Product Hunt launch. AI teammates you can give real work to. #2 of the day. #2 of the week.",
+      "Maker on the Grok Bot launch. #2 of the day, #2 of the week.",
     ],
     themes: [
       {
         title: "Now",
-        detail: "AI coding product",
+        detail: "Engineering. AI coding product.",
       },
       {
         title: "Grok Bot",
-        detail: `Maker. #${grokBotLaunch.dayRank} Product of the Day.`,
+        detail: `Maker. Product Hunt #${grokBotLaunch.dayRank} of the day.`,
       },
       {
-        title: "Ask",
-        detail: "LinkedIn. I'll tell you more there.",
+        title: "Week",
+        detail: `#${grokBotLaunch.weekRank} of the week too.`,
       },
     ],
     badge: {
@@ -125,8 +124,8 @@ export const work: WorkStory[] = [
     pullQuote:
       "Unrecognized traffic still has a frequency. Someone has to measure the model anyway.",
     lines: [
-      "Online measurement of ML models for traffic nobody recognized. Org-wide review. Other teams could see what their models actually did.",
-      "Frequency capping via ML, then blocklists out to the Amazon Ad Exchange. Public numbers: ~100k reads/s, ~80k writes/s.",
+      "Measured ML models on traffic nobody recognized. Org-wide review.",
+      "Frequency capping via ML. Then blocklists out to the Ad Exchange. ~100k reads/s, ~80k writes/s.",
       "Founding member of that team. Two engineers, then more. Demos, book clubs, shared recipes. Yeah, recipes.",
     ],
     themes: [
@@ -140,7 +139,7 @@ export const work: WorkStory[] = [
       },
       {
         title: "Team",
-        detail: "Founding member. Mentoring. Culture that was allowed to be human.",
+        detail: "Founding member. Mentoring. Yeah, recipes.",
       },
     ],
   },

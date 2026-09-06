@@ -13,7 +13,7 @@ export const writing = [
     href: "https://www.rippling.com/blog/building-spend-management-slashing-latencies",
     role: "Author — then Engineering Manager, Spend Management",
     summary:
-      "Auth API p99: ~3.5s → 600ms. Composite indexes, planner hints, connection warmup, third-party I/O that doesn't block the rest of the request. Application layer only. The four-second card-network budget is the plot.",
+      "Auth p99: ~3.5s → 600ms. Indexes, planner hints, warmup, third-party I/O that doesn't block the rest of the request.",
     takeaways: [
       "Indexes are left-to-right. Miss the leading field and you don't have an index.",
       "The planner can be wrong 1% of the time. That 1% is your p99.",

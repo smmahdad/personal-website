@@ -8,7 +8,7 @@ export const home = {
     {
       label: "Now",
       title: "Cursor",
-      detail: "Engineering. Maker on the Grok Bot PH launch.",
+      detail: "Engineering. Maker on Grok Bot.",
       badge: {
         kicker: "Product Hunt",
         label: `#${grokBotLaunch.dayRank} of the day`,

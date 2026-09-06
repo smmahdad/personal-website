@@ -12,7 +12,7 @@
 export const about = {
   title: "About",
   kicker: "Hi",
-  lede: "Community college. Berkeley. New York. I want the outcome, not the ticket.",
+  lede: "Community college. Berkeley. New York.",
   pullQuote: "Crazy to even be saying Director. Still true.",
   sections: [
     {
@@ -36,26 +36,18 @@ export const about = {
       heading: "People",
       lines: [
         "Malte Buecken. Daniel St. Jules. Albert Strasheim. Still shouting them out.",
-        "Plus every engineer who kept raising the bar.",
-        "Favorite Rippling day: Spend offsite on Governors Island. Grilling. Games. Storm the night before.",
+        "Favorite Rippling day: Governors Island. Grilling. Games. Storm the night before.",
       ],
     },
   ],
   asides: [
-    {
-      label: "Education",
-      items: [
-        "B.A. Computer Science, UC Berkeley",
-        "A.S. Mathematics, Orange Coast College",
-      ],
-    },
     {
       label: "Based",
       items: ["New York"],
     },
     {
       label: "Also",
-      items: ["English", "ASL — professional working proficiency"],
+      items: ["English", "ASL"],
     },
   ],
 } as const;
