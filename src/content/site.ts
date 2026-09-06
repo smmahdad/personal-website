@@ -7,7 +7,20 @@
  * - Cursor start date is not stated with enough certainty to print. Keep
  *   the current-role copy date-free.
  * - Email is intentionally unset until a real inbox exists for sammah.dad.
+ * - Grok Bot Product Hunt launch (Aug 12, 2026): Sam is listed as a Maker.
+ *   Public ranks: #2 of the day, #2 of the week. Do not invent contribution
+ *   scope, upvote counts, or product internals.
  */
+
+export const grokBotLaunch = {
+  product: "Grok Bot",
+  tagline: "AI teammates that you can give real work to",
+  href: "https://www.producthunt.com/products/grok/launches/grok-bot",
+  date: "August 12, 2026",
+  dayRank: 2,
+  weekRank: 2,
+  role: "Maker",
+} as const;
 
 export const site = {
   name: "Sam Mahdad",

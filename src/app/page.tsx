@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { SiteShell } from "@/components/SiteShell";
+import { LaunchBadge } from "@/components/LaunchBadge";
 import { LatencyRuler } from "@/components/LatencyRuler";
+import { SiteShell } from "@/components/SiteShell";
 import { home } from "@/content/home";
 import { work } from "@/content/work";
 import { writing } from "@/content/writing";
@@ -39,6 +40,15 @@ export default function HomePage() {
                 {item.title}
               </h2>
               <p className="mt-3 text-sm leading-6 text-muted">{item.detail}</p>
+              {"badge" in item && item.badge ? (
+                <div className="mt-5">
+                  <LaunchBadge
+                    href={item.badge.href}
+                    kicker={item.badge.kicker}
+                    label={item.badge.label}
+                  />
+                </div>
+              ) : null}
             </article>
           ))}
         </section>

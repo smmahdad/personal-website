@@ -5,12 +5,13 @@ import { describe, expect, it } from "vitest";
 import { about } from "./about";
 import { contact } from "./contact";
 import { home } from "./home";
-import { site } from "./site";
+import { grokBotLaunch, site } from "./site";
 import { latency, work } from "./work";
 import { writing, writingIntro } from "./writing";
 
 const allText = JSON.stringify({
   site,
+  grokBotLaunch,
   home,
   about,
   work,
@@ -94,6 +95,28 @@ describe("site content", () => {
     expect(work[1]?.links?.[0]?.href).toContain("rippling.com/blog");
     expect(latency.afterMs).toBe(600);
     expect(latency.beforeMs).toBe(3500);
+  });
+
+  it("features the public Grok Bot Product Hunt launch", () => {
+    expect(grokBotLaunch.product).toBe("Grok Bot");
+    expect(grokBotLaunch.tagline).toBe(
+      "AI teammates that you can give real work to",
+    );
+    expect(grokBotLaunch.href).toBe(
+      "https://www.producthunt.com/products/grok/launches/grok-bot",
+    );
+    expect(grokBotLaunch.date).toBe("August 12, 2026");
+    expect(grokBotLaunch.role).toBe("Maker");
+    expect(grokBotLaunch.dayRank).toBe(2);
+    expect(grokBotLaunch.weekRank).toBe(2);
+    expect(home.now[0]?.badge?.href).toBe(grokBotLaunch.href);
+    expect(work[0]?.badge?.href).toBe(grokBotLaunch.href);
+    expect(work[0]?.links?.some((link) => link.href === grokBotLaunch.href)).toBe(
+      true,
+    );
+    expect(allText).toMatch(/Maker on/);
+    expect(allText).not.toMatch(/497/);
+    expect(allText).not.toMatch(/Ben Lang/);
   });
 
   it("links public profiles and leaves email unset", () => {

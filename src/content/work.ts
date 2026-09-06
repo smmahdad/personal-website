@@ -1,3 +1,5 @@
+import { grokBotLaunch } from "./site";
+
 /**
  * Work stories from public sources only.
  *
@@ -23,6 +25,7 @@ export type WorkStory = {
   beats?: string[];
   themes: WorkTheme[];
   links?: { label: string; href: string }[];
+  badge?: { kicker: string; label: string; href: string };
 };
 
 export const workIntro = {
@@ -38,16 +41,34 @@ export const work: WorkStory[] = [
     role: "Engineering",
     era: "Now",
     url: "https://cursor.com",
-    summary: "I'm at Cursor. Engineering on the AI coding product.",
-    lines: ["Working on the product. If you want more, talk to me."],
+    summary: "I'm at Cursor. Maker on Grok Bot. #2 of the day.",
+    lines: [
+      "Working on the product. If you want more, talk to me.",
+      "Maker on the Grok Bot Product Hunt launch. AI teammates you can give real work to. #2 of the day. #2 of the week.",
+    ],
     themes: [
       {
         title: "Now",
         detail: "AI coding product",
       },
       {
+        title: "Grok Bot",
+        detail: `Maker. #${grokBotLaunch.dayRank} Product of the Day.`,
+      },
+      {
         title: "Ask",
         detail: "LinkedIn. I'll tell you more there.",
+      },
+    ],
+    badge: {
+      kicker: "Product Hunt",
+      label: `${grokBotLaunch.product} · #${grokBotLaunch.dayRank} of the day`,
+      href: grokBotLaunch.href,
+    },
+    links: [
+      {
+        label: "Grok Bot on Product Hunt",
+        href: grokBotLaunch.href,
       },
     ],
   },

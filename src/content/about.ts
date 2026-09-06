@@ -29,7 +29,7 @@ export const about = {
         "Amazon Ads for about five years. Measurement. Frequency capping.",
         "Rippling: Staff → EM → Senior EM → Director. Mostly Spend.",
         "We made Spend something you could buy without dragging in HCM or Payroll.",
-        "Cursor now.",
+        "Cursor now. Maker on Grok Bot. Product Hunt #2.",
       ],
     },
     {

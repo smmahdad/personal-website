@@ -1,4 +1,4 @@
-import { site } from "./site";
+import { grokBotLaunch, site } from "./site";
 
 export const home = {
   eyebrow: `${site.currentRole.title} at ${site.currentRole.company} · ${site.location}`,
@@ -8,7 +8,12 @@ export const home = {
     {
       label: "Now",
       title: "Cursor",
-      detail: "Engineering. AI coding product.",
+      detail: "Engineering. Maker on the Grok Bot PH launch.",
+      badge: {
+        kicker: "Product Hunt",
+        label: `#${grokBotLaunch.dayRank} of the day`,
+        href: grokBotLaunch.href,
+      },
     },
     {
       label: "Before",
